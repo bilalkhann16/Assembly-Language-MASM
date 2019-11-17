@@ -1,0 +1,26 @@
+Include Irvine32.inc
+.data
+	msg byte "correct",0
+	msg2 byte "not correct",0
+.code
+	main PROC
+	mov al,3
+	mov bl,8
+	mov cl,6
+	cmp al,bl	; first expression...
+	ja  L1
+	jmp next
+L1:
+	cmp bl,cl	; second expression...
+	ja  L2
+	jmp next
+L2:		; both are true
+	mov edx,offset msg
+	call writestring
+next:
+		mov edx,msg2
+		call writestring
+		exit
+	
+main endp
+end main
